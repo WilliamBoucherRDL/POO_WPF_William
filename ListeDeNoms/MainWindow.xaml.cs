@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace ListeDeNoms
 {
@@ -7,6 +8,7 @@ namespace ListeDeNoms
     /// </summary>
     public partial class MainWindow : Window
     {
+        int nombreNom = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -25,8 +27,25 @@ namespace ListeDeNoms
         // Avoir un message box qui montre le nom
         void AddName(string name)
         {
-            MessageBox.Show(name);
+            if (nombreNom == 10)
+            {
+                MessageBox.Show("maximum de nom");
+            }
+            else
+            {
+                MessageBox.Show(name);
+                var tbNom = new TextBlock();
+                tbNom.Text = name;
+                tbNom.Margin = new Thickness(10, 10 * nombreNom, 10, 10);
+                nombreNom++;
+                gridNoms.Children.Add(tbNom);
+            }
 
+        }
+
+        private void OnBtnAddNameClick(object sender, RoutedEventArgs e)
+        {
+            AddName(edtName.Text);
         }
     }
 }

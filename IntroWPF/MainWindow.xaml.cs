@@ -1,13 +1,4 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace IntroWPF
 {
@@ -16,14 +7,34 @@ namespace IntroWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool onOff;
+
         public MainWindow()
         {
             InitializeComponent();
 
             tbIntro.Text = "Salut le monde!";
-            tbIntro.FontSize= 120;
+            tbIntro.FontSize = 120;
 
             // Ensuite ajouter un bouton pour changer le texte (de type toggle)
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            tbIntro.Text = onOff ? "true" : "false";
+            //if (onOff)
+            //{
+            //    onOff = false;
+            //    tbIntro.Text = "on";
+            //}
+            //else
+            //{
+            //    onOff = true;
+            //    tbIntro.Text = "off";
+            //}
+            onOff = !onOff;
+            // resultat = predicat ? option 1 si cest vrai: si cest faux
+            // resultat = predicat ? option 1 on : off
         }
     }
 }
